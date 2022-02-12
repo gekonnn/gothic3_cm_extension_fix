@@ -84,8 +84,6 @@ def get_files():
         if "_compiledAnimation.m" in g3_datafiles[i]:
             compiledAnimation_files.append(g3_datafiles[i])
 
-    print(compiledAnimation_files)
-
     for i in range(len(g3_datafiles)):
         if "_compiledImage.m" in g3_datafiles[i]:
             compiledImage_files.append(g3_datafiles[i])
