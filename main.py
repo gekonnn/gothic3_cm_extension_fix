@@ -87,7 +87,6 @@ def fix_extensions():
         os.rename(g3_data + templates_files[i], g3_data + "Templates.m" + f"{i:02d}")
 
     print("Renamed all files successfully.")
-    input("Press enter to close the program.")
-    exit()
+    os.system("pause")
 
 setup_config()
