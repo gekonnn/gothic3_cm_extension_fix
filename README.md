@@ -9,4 +9,4 @@ This program is useful if you want to install mods like Lively Towns Mod.
 3. Specify Gothic 3 folder path
 4. Close the program<br>
 
-<small><small>Yes, i know source code could be better but hey, it works </small></small>
+<sub><sup>Yes, i know source code could be better but hey, it works </sup></sub>
