@@ -11,6 +11,10 @@ def setup_config():
             c.write(g3_dir)
             g3_data = g3_dir + "/Data/"
             g3_datafiles = os.listdir(g3_data)
+            # Remove .mod files from list so they don't get renamed.
+            for i in g3_datafiles:
+                if '.mod' in i:
+                    g3_datafiles.remove(i)
             get_files()
 
     else:
@@ -19,6 +23,10 @@ def setup_config():
                 g3_dir = str(c.readlines()).replace('[','').replace(']','').replace("'", '')
                 g3_data = g3_dir + "/Data/"
                 g3_datafiles = os.listdir(g3_data)
+                # Remove .mod files from list so they don't get renamed.
+                for i in g3_datafiles:
+                    if '.mod' in i:
+                        g3_datafiles.remove(i)
                 get_files()
         except FileNotFoundError:
             print("WARNING: Path you have specified is invalid. Please delete config.txt file and restart the program.")
@@ -75,6 +83,8 @@ def get_files():
     for i in range(len(g3_datafiles)):
         if "_compiledAnimation.m" in g3_datafiles[i]:
             compiledAnimation_files.append(g3_datafiles[i])
+
+    print(compiledAnimation_files)
 
     for i in range(len(g3_datafiles)):
         if "_compiledImage.m" in g3_datafiles[i]:
@@ -155,6 +165,8 @@ def get_files():
     for i in range(len(g3_datafiles)):
         if "Workspace.m" in g3_datafiles[i]:
             workspace_files.append(g3_datafiles[i])
+
+    print(g3_datafiles)
 
     fix_extensions()
 
