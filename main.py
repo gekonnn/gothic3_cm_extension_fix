@@ -164,8 +164,6 @@ def get_files():
         if "Workspace.m" in g3_datafiles[i]:
             workspace_files.append(g3_datafiles[i])
 
-    print(g3_datafiles)
-
     fix_extensions()
 
 def fix_extensions():
