@@ -11,21 +11,33 @@ def setup_config():
             c.write(g3_dir)
             g3_data = g3_dir + "/Data/"
             g3_datafiles = os.listdir(g3_data)
-            # Remove .mod files from list so they don't get renamed.
+            # Remove files other than .mXX from list so they don't get renamed.
             for i in g3_datafiles:
                 if '.mod' in i:
+                    g3_datafiles.remove(i)
+                if '.p' in i:
+                    g3_datafiles.remove(i)
+                if '.c' in i:
+                    g3_datafiles.remove(i)
+                if '.n' in i:
                     g3_datafiles.remove(i)
             get_files()
 
     else:
         try:
             with open("config.txt", "r") as c:
-                g3_dir = str(c.readlines()).replace('[','').replace(']','').replace("'", '')
+                g3_dir = str(c.readlines()).replace('[', '').replace(']', '').replace("'", '')
                 g3_data = g3_dir + "/Data/"
                 g3_datafiles = os.listdir(g3_data)
-                # Remove .mod files from list so they don't get renamed.
+                # Remove files other than .mXX from list so they don't get renamed.
                 for i in g3_datafiles:
                     if '.mod' in i:
+                        g3_datafiles.remove(i)
+                    if '.p' in i:
+                        g3_datafiles.remove(i)
+                    if '.c' in i:
+                        g3_datafiles.remove(i)
+                    if '.n' in i:
                         g3_datafiles.remove(i)
                 get_files()
         except FileNotFoundError:
