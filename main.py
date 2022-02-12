@@ -73,87 +73,87 @@ def get_files():
     print("Fetching files...")
 
     for i in range(len(g3_datafiles)):
-        if "_compiledAnimation" in g3_datafiles[i]:
+        if "_compiledAnimation.m" in g3_datafiles[i]:
             compiledAnimation_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledImage" in g3_datafiles[i]:
+        if "_compiledImage.m" in g3_datafiles[i]:
             compiledImage_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledMaterial" in g3_datafiles[i]:
+        if "_compiledMaterial.m" in g3_datafiles[i]:
             compiledMaterial_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledMesh" in g3_datafiles[i]:
+        if "_compiledMesh.m" in g3_datafiles[i]:
             compiledMesh_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledPhysic" in g3_datafiles[i]:
+        if "_compiledPhysic.m" in g3_datafiles[i]:
             compiledPhysic_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "gui" in g3_datafiles[i]:
+        if "gui.m" in g3_datafiles[i]:
             gui_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Infos" in g3_datafiles[i]:
+        if "Infos.m" in g3_datafiles[i]:
             infos_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Library" in g3_datafiles[i]:
+        if "Library.m" in g3_datafiles[i]:
             library_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Lightmaps" in g3_datafiles[i]:
+        if "Lightmaps.m" in g3_datafiles[i]:
             lightmaps_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Materials" in g3_datafiles[i]:
+        if "Materials.m" in g3_datafiles[i]:
             materials_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Music" in g3_datafiles[i]:
+        if "Music.m" in g3_datafiles[i]:
             music_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Quests" in g3_datafiles[i]:
+        if "Quests.m" in g3_datafiles[i]:
             quests_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Sound" in g3_datafiles[i]:
+        if "Sound.m" in g3_datafiles[i]:
             sound_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speech_English" in g3_datafiles[i]:
+        if "Speech_English.m" in g3_datafiles[i]:
             speech_english_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speech_Polish" in g3_datafiles[i]:
+        if "Speech_Polish.m" in g3_datafiles[i]:
             speech_polish_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speech_German" in g3_datafiles[i]:
+        if "Speech_German.m" in g3_datafiles[i]:
             speech_german_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speedtrees" in g3_datafiles[i]:
+        if "Speedtrees.m" in g3_datafiles[i]:
             speedtrees_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Projects_compiled" in g3_datafiles[i]:
+        if "Projects_compiled.m" in g3_datafiles[i]:
             projects_compiled_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Strings" in g3_datafiles[i]:
+        if "Strings.m" in g3_datafiles[i]:
             strings_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Templates" in g3_datafiles[i]:
+        if "Templates.m" in g3_datafiles[i]:
             templates_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Workspace" in g3_datafiles[i]:
+        if "Workspace.m" in g3_datafiles[i]:
             workspace_files.append(g3_datafiles[i])
 
     fix_extensions()
