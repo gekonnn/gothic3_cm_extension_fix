@@ -1,4 +1,27 @@
+import locale
 import os
+import ast
+import ctypes
+
+windll = ctypes.windll.kernel32
+locale_id = windll.GetUserDefaultUILanguage()
+
+# Check system language
+if locale_id == 1033 or 1031 or 1045:
+    global user_lang
+    if locale_id == 1033:
+        user_lang = "en_US"
+    if locale_id == 1031:
+        user_lang = "de_DE"
+    if locale_id == 1045:
+        user_lang = "pl_PL"
+else:
+    user_lang = "en_US"
+
+# Set language
+with open("locale/%s.txt" % user_lang, encoding="utf-8") as a:
+    locale_file = ast.literal_eval(a.read())
+
 
 def setup_config():
     if not os.path.isfile("config.txt") or os.stat("config.txt").st_size == 0:
@@ -6,7 +29,15 @@ def setup_config():
         global g3_dir
         global g3_data
         global g3_datafiles
-        g3_dir = str(input("Please specify Gothic 3 folder location: "))
+        g3_dir = str(input(locale_file.get('specify_path') + " "))
+        if g3_dir == "exit":
+            exit()
+        if not os.path.isdir(g3_dir):
+            print(locale_file.get('invalid_path'))
+            setup_config()
+        if g3_dir == " " or None:
+            g3_dir = None
+            setup_config()
         with open("config.txt", "a") as c:
             c.write(g3_dir)
             g3_data = g3_dir + "/Data/"
@@ -21,29 +52,29 @@ def setup_config():
                     g3_datafiles.remove(i)
                 if '.n' in i:
                     g3_datafiles.remove(i)
+        get_files()
+    else:
+        if not os.path.isfile("config.txt"):
+            print(locale_file.get('invalid_path'))
+            setup_config()
+        with open("config.txt", "r") as c:
+            g3_dir = str(c.readlines()).replace('[', '').replace(']', '').replace("'", '')
+            g3_data = g3_dir + "/Data/"
+            g3_datafiles = os.listdir(g3_data)
+            # Remove files other than .mXX from list so they don't get renamed.
+            for i in g3_datafiles:
+                if '.mod' in i:
+                    g3_datafiles.remove(i)
+                if '.p' in i:
+                    g3_datafiles.remove(i)
+                if '.c' in i:
+                    g3_datafiles.remove(i)
+                if '.n' in i:
+                    g3_datafiles.remove(i)
             get_files()
 
-    else:
-        try:
-            with open("config.txt", "r") as c:
-                g3_dir = str(c.readlines()).replace('[', '').replace(']', '').replace("'", '')
-                g3_data = g3_dir + "/Data/"
-                g3_datafiles = os.listdir(g3_data)
-                # Remove files other than .mXX from list so they don't get renamed.
-                for i in g3_datafiles:
-                    if '.mod' in i:
-                        g3_datafiles.remove(i)
-                    if '.p' in i:
-                        g3_datafiles.remove(i)
-                    if '.c' in i:
-                        g3_datafiles.remove(i)
-                    if '.n' in i:
-                        g3_datafiles.remove(i)
-                get_files()
-        except FileNotFoundError:
-            print("WARNING: Path you have specified is invalid. Please delete config.txt file and restart the program.")
-            os.system("pause")
-            exit()
+
+
 
 def get_files():
     global compiledAnimation_files
@@ -90,96 +121,97 @@ def get_files():
     templates_files = []
     workspace_files = []
 
-    print("Fetching files...")
+    print(locale_file.get('fetching_files'))
 
     for i in range(len(g3_datafiles)):
-        if "_compiledAnimation.m" in g3_datafiles[i]:
+        if "_compiledAnimation" in g3_datafiles[i]:
             compiledAnimation_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledImage.m" in g3_datafiles[i]:
+        if "_compiledImage" in g3_datafiles[i]:
             compiledImage_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledMaterial.m" in g3_datafiles[i]:
+        if "_compiledMaterial" in g3_datafiles[i]:
             compiledMaterial_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledMesh.m" in g3_datafiles[i]:
+        if "_compiledMesh" in g3_datafiles[i]:
             compiledMesh_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "_compiledPhysic.m" in g3_datafiles[i]:
+        if "_compiledPhysic" in g3_datafiles[i]:
             compiledPhysic_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "gui.m" in g3_datafiles[i]:
+        if "gui" in g3_datafiles[i]:
             gui_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Infos.m" in g3_datafiles[i]:
+        if "Infos" in g3_datafiles[i]:
             infos_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Library.m" in g3_datafiles[i]:
+        if "Library" in g3_datafiles[i]:
             library_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Lightmaps.m" in g3_datafiles[i]:
+        if "Lightmaps" in g3_datafiles[i]:
             lightmaps_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Materials.m" in g3_datafiles[i]:
+        if "Materials" in g3_datafiles[i]:
             materials_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Music.m" in g3_datafiles[i]:
+        if "Music" in g3_datafiles[i]:
             music_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Quests.m" in g3_datafiles[i]:
+        if "Quests" in g3_datafiles[i]:
             quests_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Sound.m" in g3_datafiles[i]:
+        if "Sound" in g3_datafiles[i]:
             sound_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speech_English.m" in g3_datafiles[i]:
+        if "Speech_English" in g3_datafiles[i]:
             speech_english_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speech_Polish.m" in g3_datafiles[i]:
+        if "Speech_Polish" in g3_datafiles[i]:
             speech_polish_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speech_German.m" in g3_datafiles[i]:
+        if "Speech_German" in g3_datafiles[i]:
             speech_german_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Speedtrees.m" in g3_datafiles[i]:
+        if "Speedtrees" in g3_datafiles[i]:
             speedtrees_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Projects_compiled.m" in g3_datafiles[i]:
+        if "Projects_compiled" in g3_datafiles[i]:
             projects_compiled_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Strings.m" in g3_datafiles[i]:
+        if "Strings" in g3_datafiles[i]:
             strings_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Templates.m" in g3_datafiles[i]:
+        if "Templates" in g3_datafiles[i]:
             templates_files.append(g3_datafiles[i])
 
     for i in range(len(g3_datafiles)):
-        if "Workspace.m" in g3_datafiles[i]:
+        if "Workspace" in g3_datafiles[i]:
             workspace_files.append(g3_datafiles[i])
 
     fix_extensions()
 
+
 def fix_extensions():
-    print("Renaming files...")
+    print(locale_file.get('rename_files'))
 
     for i in range(len(compiledAnimation_files)):
         os.rename(g3_data + compiledAnimation_files[i], g3_data + "_compiledAnimation.m" + f"{i:02d}")
@@ -244,8 +276,9 @@ def fix_extensions():
     for i in range(len(workspace_files)):
         os.rename(g3_data + workspace_files[i], g3_data + "Workspace.m" + f"{i:02d}")
 
-    print("Renamed all files successfully.")
+    print(locale_file.get('rename_success'))
     os.system("pause")
     exit()
+
 
 setup_config()
