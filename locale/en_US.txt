@@ -1,0 +1,7 @@
+{
+    'specify_path' : 'Please specify Gothic 3 installation path:',
+    'invalid_path' : 'WARNING: Path you have specified is invalid. Make sure you have specified correct game directory path. (eg. "C:/Program Files (x86)/Gothic 3").',
+    'fetching_files' : 'Fetching files...',
+    'rename_files' : 'Renaming files...',
+    'rename_success' : 'Renamed all files successfully.'
+}

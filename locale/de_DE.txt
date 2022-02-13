@@ -1,0 +1,7 @@
+{
+    'specify_path' : 'Bitte geben Sie den Installationspfad von Gothic 3 an:',
+    'invalid_path' : 'WARNUNG: Der von Ihnen angegebene Pfad ist ungültig. Stellen Sie sicher, dass Sie den richtigen Spielverzeichnispfad angegeben haben. (z. B. "C:/Program Files (x86)/Gothic 3").',
+    'fetching_files' : 'Dateien werden abgerufen...',
+    'rename_files' : 'Dateinamen ändern...',
+    'rename_success' : 'Alle Dateien erfolgreich umbenannt.'
+}

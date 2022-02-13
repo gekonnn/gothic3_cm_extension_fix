@@ -1,0 +1,7 @@
+{
+	'specify_path' : 'Podaj ścieżkę instalacji Gothic 3:',
+	'invalid_path' : 'OSTRZEŻENIE: Określona ścieżka nie istnieje. Upewnij się że poprawnie podałeś ścieżkę folderu gry. (np. "C:/Program Files (x86)/Gothic 3").',
+	'fetching_files' : 'Zbieranie plików...',
+	'rename_files' : 'Zmienianie nazwy plików...',
+	'rename_success' : 'Pomyślnie zmieniono nazwy plików.'
+}
