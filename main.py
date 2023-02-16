@@ -25,8 +25,6 @@ if locale_id == 1033 or 1031 or 1045:
 else:
     user_lang = "en_US"
 
-user_lang = "pl_PL"
-
 # Set program language
 with open("locale/%s.txt" % user_lang, encoding="utf-8") as a:
     locale_file = ast.literal_eval(a.read())
