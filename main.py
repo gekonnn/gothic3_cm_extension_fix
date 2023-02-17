@@ -25,8 +25,6 @@ if locale_id == 1033 or 1031 or 1045:
 else:
     user_lang = "en_US"
 
-
-
 def wait_for_exit():
     input(lang('wait_for_exit'))
     exit()
