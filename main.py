@@ -25,9 +25,7 @@ if locale_id == 1033 or 1031 or 1045:
 else:
     user_lang = "en_US"
 
-# Set program language
-with open("locale/%s.txt" % user_lang, encoding="utf-8") as a:
-    locale_file = ast.literal_eval(a.read())
+
 
 def wait_for_exit():
     input(lang('wait_for_exit'))
@@ -40,6 +38,16 @@ def clear():
     os.system('cls' if os.name=='nt' else 'clear')
 
 clear()
+
+# Check if language files exist
+if not os.path.exists("locale/en_US.txt"):
+    print('[!] Language files not found!')
+    input("Press ENTER to exit.")
+    exit()
+else:
+    # Set program language
+    with open("locale/%s.txt" % user_lang, encoding="utf-8") as a:
+        locale_file = ast.literal_eval(a.read())
 
 autocheck_dirs =   ["C:\Program Files (x86)\Steam\steamapps\common\Gothic 3",
                     "C:\Program Files (x86)\GOG Galaxy\Games\Gothic 3"
