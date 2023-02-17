@@ -29,8 +29,17 @@ else:
 with open("locale/%s.txt" % user_lang, encoding="utf-8") as a:
     locale_file = ast.literal_eval(a.read())
 
+def wait_for_exit():
+    input(lang('wait_for_exit'))
+    exit()
+
 def lang(key):
     return locale_file.get(key)
+
+def clear():
+    os.system('cls' if os.name=='nt' else 'clear')
+
+clear()
 
 autocheck_dirs =   ["C:\Program Files (x86)\Steam\steamapps\common\Gothic 3",
                     "C:\Program Files (x86)\GOG Galaxy\Games\Gothic 3"
@@ -62,6 +71,8 @@ def specify_path():
         sort_files(gothic_path)
 
 def sort_files(gothic_path):
+    clear()
+    
     anomalies = 0
     
     for f in os.listdir(gothic_path):
@@ -87,5 +98,7 @@ def sort_files(gothic_path):
         print(lang('no_anomalies'))
     else:
         print(lang('rename_success'))
+
+    wait_for_exit()
 
 dir_search()

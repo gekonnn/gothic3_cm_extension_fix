@@ -1,8 +1,9 @@
 {
-	'path_found'        : 'Ścieżka Gothic 3 została znaleziona. ({0}) Kontynuować? (Y/N): ',
-	'specify_path' 		: 'Podaj ścieżkę instalacji Gothic 3: ',
+	'path_found'        : '[?] Ścieżka Gothic 3 została znaleziona. ({0}) Kontynuować? (Y/N): ',
+	'specify_path' 		: '[?] Podaj ścieżkę instalacji Gothic 3: ',
 	'invalid_path' 		: '[!] OSTRZEŻENIE: Podaj poprawną ścieżkę gry (np. "C:/Program Files (x86)/Gothic 3").',
     'anomaly_found'     : '[!] Plik "{0}" jest nie posortowany. Poprawianie...',
-    'no_anomalies'      : 'Nie znaleziono żadnych nieprawidłowości w plikach.',
-	'rename_success' 	: 'Pomyślnie zmieniono nazwy plików.'
+    'no_anomalies'      : '[i] Nie znaleziono żadnych nieprawidłowości w plikach.',
+	'rename_success' 	: '[i] Pomyślnie zmieniono nazwy plików.',
+	'wait_for_exit'     : '--- Wciśnij ENTER, aby zamknąć program. ---'
 }
