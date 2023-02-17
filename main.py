@@ -38,6 +38,7 @@ autocheck_dirs =   ["C:\Program Files (x86)\Steam\steamapps\common\Gothic 3",
                     "D:\Steam\steamapps\common\Gothic 3"
                     "D:\Gothic 3"]
 
+# Try automatically searching for G3 directory, using directories from list above
 def dir_search():
     for dir in autocheck_dirs:
         if os.path.exists(dir):
