@@ -4,6 +4,7 @@ import ctypes
 import ast
 import sys
 import os
+import re
 
 config = configparser.ConfigParser()
 
@@ -37,8 +38,9 @@ common_dirs =   ["C:\Program Files (x86)\Steam\steamapps\common\Gothic 3",
                 "C:\Games\Gothic 3"
                 "D:\Steam\steamapps\common\Gothic 3"
                 "D:\Gothic 3"]
+
 extensions = {}
-ext_pattern = ".m{:02d}"
+ext_pattern = re.compile(r"^.m[0-9][0-9]")
 
 # Set program language
 if config_lang == "auto":
@@ -62,6 +64,7 @@ else:
 def dir_search():
     if config_dir == "auto":
         for dir in common_dirs:
+            debuglog(f"Checking for Gothic directory in: {dir}")
             if os.path.exists(dir):
                 if "Gothic3.exe" in os.listdir(dir):
                     found = True
@@ -100,13 +103,15 @@ def sort_files(gothic_path):
         file_name = file[0]
         file_extension = file[1]
         if file_name in data_files:
-            if file_extension.startswith(".m") and file_extension != ".mod":
+            if re.match(ext_pattern, file_extension):
+                debuglog(f'{f} is a .mxx format, analyzing...')
                 extension_number = int(file_extension[2:])
                 if extension_number == extensions.get(file_name, 0):
+                    debuglog(f'{f} is correctly sorted.')
                     extensions[file_name] = extension_number + 1
                 else:
                     for new_extension in range(extensions.get(file_name, 0), 100):
-                        new_filename = f"{file_name}{ext_pattern.format(new_extension)}"
+                        new_filename = f"{file_name}" + ".m{:02d}".format(new_extension)
                         if not os.path.exists(os.path.join(gothic_path, new_filename)):
                             print(lang('anomaly_found').format(f))
                             debuglog(f'{f} is not sorted.')
