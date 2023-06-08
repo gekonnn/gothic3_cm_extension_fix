@@ -2,6 +2,7 @@ import configparser
 import locale
 import ctypes
 import ast
+import sys
 import os
 
 config = configparser.ConfigParser()
@@ -10,7 +11,7 @@ config = configparser.ConfigParser()
 windll = ctypes.windll.kernel32
 locale_id = windll.GetUserDefaultUILanguage()
 user_lang = locale.windows_locale[ locale_id ]
-default_lang =  "en_US"
+default_lang = "en_US"
 
 # Read config file
 try:
@@ -51,7 +52,7 @@ if config_lang == "auto":
         except:
                 print('[!] Language files not found!')
                 input("Press ENTER to exit.")
-                exit()
+                sys.exit()
 else:
     with open(f"locale/{config_lang}.txt", encoding="utf-8") as a:
         locale_file = ast.literal_eval(a.read())
@@ -126,7 +127,7 @@ def sort_files(gothic_path):
 
 def wait_for_exit():
     input(lang('wait_for_exit'))
-    exit()
+    sys.exit()
 
 
 def lang(key):
