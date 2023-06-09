@@ -148,7 +148,7 @@ def lang(key):
 
 def clear():
     if not config_debug:
-        os.sysem('cls' if os.name=='nt' else 'clear')
+        os.system('cls' if os.name=='nt' else 'clear')
 
 
 def debuglog(string):
