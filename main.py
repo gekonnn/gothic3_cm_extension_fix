@@ -1,17 +1,19 @@
 import configparser
-import locale
-import ctypes
-import ast
-import sys
 import os
 import re
+
+from traceback import format_exc
+from locale import windows_locale
+from ctypes import windll
+from ast import literal_eval
+from sys import exit
 
 config = configparser.ConfigParser()
 
 # Get system language
-windll = ctypes.windll.kernel32
+windll = windll.kernel32
 locale_id = windll.GetUserDefaultUILanguage()
-user_lang = locale.windows_locale[ locale_id ]
+user_lang = windows_locale[ locale_id ]
 default_lang = "en_US"
 
 # Read config file
@@ -27,6 +29,11 @@ except:
     config_lang     = "auto"
     config_dir      = "auto"
     config_debug    = False
+
+    # generate config
+    f = open("config.ini", "a")
+    f.write(f"[G3CMEF]\nlanguage={config_lang}\ngothicdir={config_dir}\n\n[DEBUG]\ndebug={'true' if config_debug else 'false'}")
+    f.close()
 
 data_files =    ["_compiledAnimation", "_compiledImage", "_compiledMaterial", "_compiledMesh", "_compiledPhysic", 
                 "gui", "Infos", "Library", "Lightmaps", "Materials", "Music", "Quests", "Sound", "Strings",
@@ -46,18 +53,18 @@ ext_pattern = re.compile(r"^.m[0-9][0-9]")
 if config_lang == "auto":
     if os.path.exists(f'locale/{user_lang}.txt'):
         with open(f"locale/{user_lang}.txt", encoding="utf-8") as a:
-            locale_file = ast.literal_eval(a.read())
+            locale_file = literal_eval(a.read())
     else:
         try:
             with open(f"locale/{default_lang}.txt", encoding="utf-8") as a:
-                locale_file = ast.literal_eval(a.read())
+                locale_file = literal_eval(a.read())
         except:
                 print('[!] Language files not found!')
                 input("Press ENTER to exit.")
-                sys.exit()
+                exit()
 else:
     with open(f"locale/{config_lang}.txt", encoding="utf-8") as a:
-        locale_file = ast.literal_eval(a.read())
+        locale_file = literal_eval(a.read())
 
 
 # Try automatically searching for G3 directory, using directories from list above
@@ -132,7 +139,7 @@ def sort_files(gothic_path):
 
 def wait_for_exit():
     input(lang('wait_for_exit'))
-    sys.exit()
+    exit()
 
 
 def lang(key):
@@ -141,7 +148,7 @@ def lang(key):
 
 def clear():
     if not config_debug:
-        os.system('cls' if os.name=='nt' else 'clear')
+        os.sysem('cls' if os.name=='nt' else 'clear')
 
 
 def debuglog(string):
@@ -149,5 +156,9 @@ def debuglog(string):
         print(f"[DEBUG] {string}")
 
 
-clear()
-dir_search()
+try:
+    clear()
+    dir_search()
+except:
+    print(f'An error has occured:\n\n{format_exc()}')
+    wait_for_exit()
