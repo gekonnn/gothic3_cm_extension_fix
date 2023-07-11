@@ -2,6 +2,7 @@
     'path_found'        : '[?] Gothic 3-Pfad wurde erkannt. ({0}) Fortfahren? (Y/N): ',
     'specify_path'      : '[?] Bitte geben Sie den Installationspfad von Gothic 3 an: ',
     'invalid_path'      : '[!] WARNUNG: Bitte geben Sie den korrekten Spielpfad an (z.B. "C:/Program Files (x86)/Gothic 3").',
+    'analyzing'         : '[i] Analyse: {0}',
     'anomaly_found'     : '[!] Datei "{0}" ist nicht sortiert. Umbenennung...',
     'no_anomalies'      : '[i] Es wurden keine Unregelmäßigkeiten festgestellt',
     'rename_success'    : '[i] Alle Dateien erfolgreich umbenannt.',

@@ -2,6 +2,7 @@
     'path_found'        : '[?] Gothic 3 path has been detected. ({0}) Proceed? (Y/N): ',
     'specify_path'      : '[?] Please specify Gothic 3 installation path: ',
     'invalid_path'      : '[!] WARNING: Please specify correct game path (eg. "C:/Program Files (x86)/Gothic 3").',
+    'analyzing'         : '[i] Analyzing: {0}',
     'anomaly_found'     : '[!] File "{0}" is not in order. Renaming...',
     'no_anomalies'      : '[i] No anomalies have been detected.',
     'rename_success'    : '[i] Renamed all files successfully.',
