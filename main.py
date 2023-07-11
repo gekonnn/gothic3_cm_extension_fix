@@ -70,6 +70,7 @@ else:
 # Try automatically searching for G3 directory, using directories from list above
 def dir_search():
     if config_dir == "auto":
+        found = False
         for dir in common_dirs:
             debuglog(f"Checking for Gothic directory in: {dir}")
             if os.path.exists(dir):
